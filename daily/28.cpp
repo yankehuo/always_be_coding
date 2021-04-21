@@ -48,15 +48,18 @@ private:
 		lps[0] = 0;
 		int j = 0;
 		for (int i = 1; i != n; ) {
+			// aab
 			if (needle[j] == needle[i]) {
-				lps[i++] = ++j;
+				lps[i] = ++j;
+				++i;
 			}
 			else {
 				if (j != 0) {
 					j = lps[j - 1];
 				}
 				else {
-					lps[i++] = 0;
+					lps[i] = 0;
+					++i;
 				}
 			}
 		}
