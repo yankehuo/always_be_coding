@@ -149,9 +149,69 @@ BSTNode<T>* BSTree<T>::iterativeSearch(T key) {
 	iterativeSearch(mRoot, key);
 }
 
+template <typename T>
+void BSTree<T>::preOrder() {
+	preOrder(mRoot);
+}
 
+template <typename T>
+void BSTree<T>::inOrder(BSTNode<T>* tree) const {
+	if (tree != nullptr) {
+		inOrder(tree->left);
+		cout << tree->key << " ";
+		inOrder(tree->right);
+	}
+}
 
+template <typename T>
+void BSTree<T>::inOrder() {
+	inOrder(mRoot);
+}
 
+template <typename T>
+void BSTree<T>::postOrder(BSTNode<T>* tree) const {
+	if (tree != nullptr) {
+		postOrder(tree->left);
+		postOrder(tree->right);
+		cout << tree->key << " ";
+	}
+}
+
+template <typename T>
+void BSTree<T>::postOrder() {
+	postOrder(mRoot);
+}
+
+template <typename T>
+BSTNode<T>* BSTree<T>::search(BSTNode<T>* x, T key) const {
+	if (x == nullptr || x->key == key)
+		return x;
+	if (key < x->key)
+		return search(x->left, key);
+	else
+		return search(x->right, key);
+}
+
+template <typename T>
+BSTNode<T>* BSTree<T>::search(T key) {
+	search(mRoot, key);
+}
+
+template <typename T>
+BSTNode<T>* BSTree<T>::iterativeSearch(BSTNode<T>* x, T key) const {
+	while ((x != nullptr) && (x->key != key)) {
+		if (key < x->key)
+			x = x->left;
+		else
+			x = x->right;
+	}
+	return x;
+}
+
+template <typename T>
+BSTNode<T>* BSTree<T>::iterativeSearch(T key) {
+	iterativeSearch(mRoot, key);
+}
 
 // append
 
