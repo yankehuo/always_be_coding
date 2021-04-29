@@ -11,6 +11,7 @@ public:
 		for (int right = 0; right != n; ++right) {
 			char c = s[right];
 			if (mp.count(c)) {
+				// update the index
 				if (mp[c] >= left) {
 					left = mp[c] + 1;
 				}
@@ -32,9 +33,11 @@ public:
 		if (n < 2) return n;
 		int res = 0;
 		unordered_map<char, int> mp;
+		// extend the window
 		for (int right = 0; right != n; ++right) {
 			char c = s[right];
 			++mp[c];
+			// shrink the window
 			while (mp[c] == 2) {
 				char leftc = s[left];
 				++left;
@@ -44,8 +47,14 @@ public:
 		}
 		return res;
 	}
-}
+};
 
 int main() {
+	string line;
+	while (getline(cin, line)) {
+		string s = line;
+		int res = Solution2().length(s);
+		cout << res << endl;
+	}
 	return 0;
 }

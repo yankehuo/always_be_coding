@@ -4,7 +4,7 @@
 void int_test() {
 	int iarr[4] = {10, 20, 30, 40};
 	cout << "\n----int_test----" << endl;
-	DoubleLink<int>* pdlink = new DoubleLink<int>();
+	DoubleLink<int> *pdlink = new DoubleLink<int>();
 
 	pdlink->insert(0, iarr[1]);
 	pdlink->append_last(iarr[0]);

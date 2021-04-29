@@ -53,8 +53,8 @@ DoubleLink<T>::DoubleLink() : count(0) {
 
 template <typename T>
 DoubleLink<T>::~DoubleLink() {
-	DNode<T>* ptmp;
-	DNode<T>* pnode = phead->next;
+	DNode<T> *ptmp;
+	DNode<T> *pnode = phead->next;
 	while (pnode != phead) {
 		ptmp = pnode;
 		pnode = pnode->next;
@@ -75,7 +75,7 @@ int DoubleLink<T>::is_empty() {
 }
 
 template <typename T>
-DNode<T>* DoubleLink<T>::get_node(int index) {
+DNode<T> *DoubleLink<T>::get_node(int index) {
 	if (index < 0 || index >= count) {
 		cout << "get node failed! the index in out of bound!" << endl;
 		return nullptr;
@@ -83,7 +83,7 @@ DNode<T>* DoubleLink<T>::get_node(int index) {
 	// find -->
 	if (index <= count / 2) {
 		int i = 0;
-		DNode<T>* pindex = phead->next;
+		DNode<T> *pindex = phead->next;
 		while (i++ < index) {
 			pindex = pindex->next;
 		}
@@ -93,7 +93,7 @@ DNode<T>* DoubleLink<T>::get_node(int index) {
 	// find <--
 	int j = 0;
 	int rindex = count - index - 1;
-	DNode<T>* prindex = phead->prev;
+	DNode<T> *prindex = phead->prev;
 	while (j++ < rindex) {
 		prindex = prindex->prev;
 	}
@@ -119,8 +119,8 @@ template <typename T>
 int DoubleLink<T>::insert(int index, T t) {
 	if (index == 0)
 		return insert_first(t);
-	DNode<T>* pindex = get_node(index);
-	DNode<T>* pnode = new DNode<T>(t, pindex->prev, pindex);
+	DNode<T> *pindex = get_node(index);
+	DNode<T> *pnode = new DNode<T>(t, pindex->prev, pindex);
 	pindex->prev->next = pnode;
 	pindex->prev = pnode;
 	++count;
@@ -129,7 +129,7 @@ int DoubleLink<T>::insert(int index, T t) {
 
 template <typename T>
 int DoubleLink<T>::insert_first(T t) {
-	DNode<T>* pnode = new DNode<T>(t, phead, phead->next);
+	DNode<T> *pnode = new DNode<T>(t, phead, phead->next);
 	phead->next->prev = pnode;
 	phead->next = pnode;
 	++count;
@@ -138,7 +138,7 @@ int DoubleLink<T>::insert_first(T t) {
 
 template <typename T>
 int DoubleLink<T>::append_last(T t) {
-	DNode<T>* pnode = new DNode<T>(t, phead->prev, phead);
+	DNode<T> *pnode = new DNode<T>(t, phead->prev, phead);
 	phead->prev->next = pnode;
 	phead->prev = pnode;
 	++count;
@@ -147,7 +147,7 @@ int DoubleLink<T>::append_last(T t) {
 
 template <typename T>
 int DoubleLink<T>::del(int index) {
-	DNode<T>* pindex = get_node(index);
+	DNode<T> *pindex = get_node(index);
 	pindex->next->prev = pindex->prev;
 	pindex->prev->next = pindex->next;
 	delete pindex;
