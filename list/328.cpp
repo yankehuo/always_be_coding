@@ -15,6 +15,34 @@ ListNode *oddevenlist(ListNode *head) {
 	odd->next = evenhead;
 	return head;
 }
+
+ListNode *oddtail = nullptr;
+ListNode *oddeven(ListNode *head) {
+	if (!head) return nullptr;
+	ListNode *even = getoddeven(head);
+	oddtail->next = even;
+	return head;
+}
+ListNode *getoddeven(ListNode *node) {
+	ListNode *even = nullptr;
+	if (node && node->next) {
+		even = node->next;
+		node->next = even->next;
+		if (even->next) {
+			even->next = even->next->next;
+			getoddeven(node->next);
+		}
+		else {
+			oddtail = node;
+		}
+	}
+	else {
+		oddtail = node;
+	}
+	return even;
+}
+
+
 int main() {
 	return 0;
 }
