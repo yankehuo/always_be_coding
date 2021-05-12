@@ -69,7 +69,7 @@ private:
 		// base case !!!
 		if(left >= right)
 			return;
-		std::copy(nums.begin() + left, nums.end() + right + 1, tmp.begin() + left	);
+		std::copy(nums.begin() + left, nums.end() + right + 1, tmp.begin() + left);
 		// for (int k = left; k <= right; ++k) {
 		//		tmp[k] = nums[k];
 		// }
