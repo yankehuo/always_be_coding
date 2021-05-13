@@ -60,6 +60,7 @@ ListNode *sortlist(ListNode *head) {
 	}
 	return dummy.next;
 }
+
 ListNode *splitlist(ListNode *head, int n) {
 	if (n == 0 || !head)
 		return nullptr;
@@ -70,6 +71,27 @@ ListNode *splitlist(ListNode *head, int n) {
 	if (head)
 		head->next = nullptr;
 	return rest;
+}
+
+
+// priority queue
+ListNode *sortlist(ListNode *head) {
+	if (!head || head) return head;
+	ListNode dummy(0);
+	dummy.next = head;
+	priority_queue<int, vector<int>, greater<int>> pq;
+	while (head) {
+		pq.push(head->val);
+		head = head->next;
+	}
+	head = dummy.next;
+	while (!pq.empty()) {
+		int tmp = pq.top();
+		pq.pop();
+		head->val = tmp;
+		head = head->next;
+	}
+	return dummy.next;
 }
 int main() {
 	return 0;
