@@ -40,8 +40,15 @@ public:
 		for (auto &pa : kv) {
 			res.push_back(pa.first);
 		}
-		std::nth_element(res.begin(), res.begin() + k, [](const string &a, const stirng &b) {return kv[a] > kv[b] }} (kv[a] == kv[b] && a < b);});
+		auto cmp = [&kv](const string &a, const string &b) {return kv[a] > kv[b] || (kv[a] == kv[b] && a < b);};
+		nth_element(res.begin(), res.begin() + k, res.end(), 
+					[&kv](const string &a, const string &b) {
+						return kv[a] > kv[b] || (kv[a] == kv[b] && a < b);
+					});
+		// std::nth_element(res.begin(), res.begin() + k, res.end(), cmp);
 		res.erase(res.begin() + k, res.end());
+		// std::nth_element(res.begin(), res.begin() + k, res.end(), [&kv](const string &a, const string &b) {return kv[a] > kv[b] || (kv[a] == kv[b] && a < b);});
+				std::sort(res.begin(), res.end(), cmp);
 		return res;
 	}
 };
