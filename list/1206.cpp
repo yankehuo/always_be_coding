@@ -3,6 +3,7 @@ using namespace std;
 
 static const int SKIPLIST_P_VAL = RAND_MAX / 2, MAX_LEVEL = 16;
 class Skiplist {
+static const int SKIPLIST_P_VAL = RAND_MAX / 2, MAX_LEVEL = 16;
 public:
 	struct Node {
 
@@ -33,7 +34,11 @@ private:
 	}
 public:
 	Skiplist() : head_(INT_MIN, MAX_LEVEL) {}
+<<<<<<< HEAD
 	~Skiplist();
+=======
+	// ~Skiplist() {};
+>>>>>>> 40961d9bad6c2ac3682f3e98d2f93a03069b671c
 	// search
 	bool search(int target) {
 		Node *pre = _search(target)[0];
@@ -70,6 +75,10 @@ public:
 			--maxlevel_;
 		return true;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 40961d9bad6c2ac3682f3e98d2f93a03069b671c
 };
 
 /**
