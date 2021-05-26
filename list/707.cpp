@@ -12,6 +12,7 @@ public:
 			delete todel;
 		}
 		head_ = nullptr;
+		tail_ = nullptr;
 	}
 	
 	int get(int index) {
@@ -87,4 +88,4 @@ private:
 
 int main() {
 	return 0;
-}
+
