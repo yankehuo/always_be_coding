@@ -54,6 +54,30 @@ public:
 		return res;
 	}
 };
+class Solution {
+public:
+	string reverseParentheses(string s) {
+		int i = 0;
+		return reverseParentheses(s, i);
+	}
+private:
+	string reverseParentheses(string s, int &i) {
+		string res;
+		while (i < s.size() && s[i] != ')') {
+			if (isalpha(s[i])) {
+				res += s[i++];
+			}
+			else {
+				++i;
+				string tmp = reverseParentheses(s, i);
+				reverse(tmp.begin(), tmp.end());
+				res += tmp;
+				++i;
+			}
+		}
+		return res;
+	}
+};
 
 int main() {
 	return 0;
