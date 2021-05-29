@@ -55,6 +55,17 @@ public:
 	}
 };
 
+class Solution {
+public:
+	string reverseParentheses(string s) {
+
+	}
+private:
+	string helper(string &s) {
+		int l = s.find_last_of(')', s.size() - 1);
+	}
+};
+
 int main() {
 	return 0;
 }
