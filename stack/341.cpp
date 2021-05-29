@@ -2,9 +2,9 @@
 using namespace std;
 class NestedIterator {
 private:
-	stack<NestedIterator> st;
+	stack<NestedInteger> st;
 public:
-	NestedIterator(vector<NestedIterator> &nestedList) {
+	NestedIterator(vector<NestedInteger> &nestedList) {
 		for (int i = nestedList.size() - 1; i >= 0; --i) {
 			st.push(nestedList[i]);
 		}
