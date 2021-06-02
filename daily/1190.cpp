@@ -54,40 +54,31 @@ public:
 		return res;
 	}
 };
-class Solution {
-public:
-	string reverseParentheses(string s) {
-		int i = 0;
-		return reverseParentheses(s, i);
-	}
-private:
-	string reverseParentheses(string s, int &i) {
-		string res;
-		while (i < s.size() && s[i] != ')') {
-			if (isalpha(s[i])) {
-				res += s[i++];
-			}
-			else {
-				++i;
-				string tmp = reverseParentheses(s, i);
-				reverse(tmp.begin(), tmp.end());
-				res += tmp;
-				++i;
-			}
-		}
-		return res;
-	}
-};
 
 class Solution {
 public:
 	string reverseParentheses(string s) {
-
+		return helper(s);
 	}
 private:
 	string helper(string &s) {
-		int l = s.find_last_of(')', s.size() - 1);
+		int l = s.find_last_of('(', s.size() - 1);
+		if (l == string::npos) {
+			return s;
+		}
+		int r = l + 1;
+		while (s[r] != ')')
+			++r;
+		int left = l + 1;
+		int right = r - 1;
+		while (left < right) {
+			swap(s[left++], s[right--]);
+		}
+		s.erase(l, 1);
+		s.erase(r - 1, 1);
+		return helper(s);
 	}
+	
 };
 
 int main() {

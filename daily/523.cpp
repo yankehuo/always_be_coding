@@ -38,17 +38,45 @@ public:
 	}
 };
 
+// i---j
+// prej - prei-1 = n*k
+// prei-1 = prej - n*k
 class Solution3 {
 public:
 	bool checkSub(vector<int> &nums, int k) {
 		int len = nums.size();
 		int pre = 0;
 		unordered_map<int, vector<int>> kv;
+		kv.insert({0, {-1}});
 		for (int i = 0; i < len; ++i) {
 			pre = (pre + nums[i]) % k;
 			kv[pre].push_back(i);
-			if (kv[pre].size() >= 2 && kv[pre].end() - kv[pre].begin() >= 2)
+			if (kv[pre].size() >= 2 && kv[pre].back() - kv[pre].front() >= 2)
 				return true;
+		}
+		return false;
+	}
+};
+
+
+//
+class Solution {
+public:
+	bool  checkSub(vector<int> &nums, int k) {
+		int len = nums.size();
+		int pre = 0;
+		unordered_map<int, int> kv;
+		kv[0] = -1;
+		for (int i = 0; i < len; ++i) {
+			pre = (pre + nums[i]) % k;
+			if (kv.count(pre)) {
+				int preidx = kv[pre];
+				if (i - preidx >= 2)
+					return true;
+			}
+			else {
+				kv[pre] = i;
+			}
 		}
 		return false;
 	}
