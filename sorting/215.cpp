@@ -8,6 +8,7 @@ public:
 	}
 
 private:
+	// modified
 	int quick_select(vector<int> &nums, int left, int right, int i) {
 		if (left == right) return nums[left];
 		int pcut = partition(nums, left, right);

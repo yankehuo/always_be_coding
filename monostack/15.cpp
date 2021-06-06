@@ -7,7 +7,7 @@ public:
 		int res = 0;
 		stack<int> stk;
 		int i = 0;
-		while (i < len || !stk.empyt()) {
+		while (i < len || !stk.empty()) {
 			if (stk.empty() || (i < len && heights[i] >= heights[stk.top()])) {
 				stk.push(i++);
 			}
