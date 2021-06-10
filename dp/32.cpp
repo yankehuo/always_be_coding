@@ -33,6 +33,25 @@ public:
 		return res;
 	}
 };
+
+int longestValidParentheses(string s) {
+	int res = 0;
+	int len = s.size();
+	if (len == 0)
+		return 0;
+	int dp[len];
+	memset(dp, 0, sizeof(dp));
+	for (int i = 1; i < len; ++i) {
+		if (s[i] == ')') {
+			int j = i - dp[i - 1] - 1;
+			if (j >= 0 && s[j] == '(') {
+				dp[i] = (i - j + 1) + ((j - 1) >= 0 ? dp[j - 1] : 0);
+			}
+		}
+		res = max(res, dp[i]);
+	}
+	return res;
+}
 int main() {
 	return 0;
 }
