@@ -36,6 +36,7 @@ void solve() {
 
 void init() {
 	scanf("%d %d", &N, &M);
+	// '\0' ?
 	for (int i = 0; i < N; ++i) {
 		scanf("%s", field[i]);
 	}
