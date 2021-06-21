@@ -40,7 +40,7 @@ public:
 		}
 	}
 	void addAtIndex(int index, int val) {
-		if (index < 0 || index >= size_)
+		if (index < 0 || index > size_)
 			return;
 		if (0 == index)
 			return addAtHead(val);
@@ -72,7 +72,8 @@ public:
 
 	}
 
-private:
+//private:
+public:
 	// set constructor properly
 	struct ListNode {
 		int val;
@@ -86,6 +87,32 @@ private:
 	int size_;
 };
 
-int main() {
+
+
+int main(int argc, char **argv) {
+	MyLinkedList mylist;
+	mylist.addAtTail(1);
+	// cout << mylist.get(0) << endl;
+
+	mylist.addAtIndex(1, 2);
+	mylist.addAtIndex(2, 3);
+	mylist.addAtIndex(3, 4);
+	mylist.addAtIndex(4, 5);
+
+	MyLinkedList::ListNode *cur = mylist.head_;
+	while (cur) {
+		cout << cur->val << " ";
+		cur = cur->next;
+	}
+	
+	cout << "\n--------------" << endl;
+
+
+	mylist.deleteAtIndex(3);
+	cout << mylist.get(2) << endl;
+	cout << mylist.get(3) << endl;
+	// mylist.deleteAtIndex(3);
+
 	return 0;
+}
 
