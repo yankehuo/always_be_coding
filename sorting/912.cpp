@@ -8,7 +8,7 @@ public:
 		// [i, sz - 1)
 		for (int i = 0; i != nums.size() - 1; ++i) {
 			int minidx = i;
-			for (int j = i + 1; j != nums.size(); ++i) {
+			for (int j = i + 1; j != nums.size(); ++j) {
 				if (nums[j] < nums[minidx]) {
 					minidx = j;
 				}
@@ -59,7 +59,7 @@ private:
 	// inplace merge sort bottom to up
 	void inplace_mergesort(vector<int> &nums, vector<int> &tmp) {
 		for (int sz = 1; sz < nums.size(); sz += sz) {
-			for (int lo = 0; lo < nums.size() - sz; ++lo) {
+			for (int lo = 0; lo < nums.size() - sz; lo += sz + sz) {
 				merge(nums, lo, lo + sz - 1, std::min(lo + sz + sz - 1, nums.size() - 1));
 			}
 		}
