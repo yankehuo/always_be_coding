@@ -18,6 +18,12 @@ void int_test() {
 		cout << "pdlink("<<i<<")=" << pdlink->get(i) << endl;
 }
 
+void head_int_test() {
+	int iarr[2] = {0, 1};
+	DoubleLink<int> *pdlink = new DoubleLink<int>();
+	pdlink->get_node(0)->value;
+}
+
 void string_test() {
 	string sarr[4] = {"ten", "twenty", "thirty", "forty"};
 	cout << "\n---string_test----" << endl;
@@ -65,6 +71,7 @@ void object_test() {
 }
 
 int main() {
+	head_int_test();
 	int_test();
 	string_test();
 	object_test();
