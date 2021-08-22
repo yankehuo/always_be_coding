@@ -7,7 +7,7 @@ for (int i = 0, j = 0; i < n; ++i) {
 		++j;
 }
 //
-// 
+// 维护一段区间
 // maintain the interval, or sequence?
 int main() {
 	return 0;
