@@ -5,7 +5,8 @@ const int N = 1e5 + 10;
 // 朴素并查集
 int fa[N]; // 存储节点
 // 初始化
-for (int i = 1; i <= n; ++i) fa[i] = i;
+for (int i = 1; i <= n; ++i) 
+    fa[i] = i;
 
 // 返回x的祖宗节点
 int get(int x) {
@@ -26,6 +27,12 @@ int get(int x) {
     int root = get(fa[x]);
     d[x] += d[fa[x]]; // d[x]存储x到fa[x]的距离
     return fa[x] = root;
+}
+
+// 维护size[]祖宗节点的大小
+void merge(int x, int y) {
+    size[get(y)] += size[get(x)];
+    fa[get(x)] = get(y);
 }
 // 初始化
 // 合并
